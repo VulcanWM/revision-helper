@@ -26,7 +26,8 @@
     "regenerator-runtime": "^0.14.1",
     "sharp": "^0.31.3",
     "tailwind-merge": "^1.13.2",
-    "tailwindcss-animate": "^1.0.6"
+    "tailwindcss-animate": "^1.0.6",
+    "tesseract.js": "^5.0.4"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.23.9",

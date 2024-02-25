@@ -8,6 +8,7 @@ const Text = dynamic(() => import("../components/Text"), {
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
+import TextRecognition from "@/components/TextRecognition";
 
 export default function IndexPage() {
   return (
@@ -21,6 +22,7 @@ export default function IndexPage() {
         </p>
       </div>
       <Text />
+      <TextRecognition/>
       <div className="flex gap-4">
         <Link
           href={siteConfig.links.docs}
