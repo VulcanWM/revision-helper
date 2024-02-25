@@ -1,5 +1,10 @@
 import Link from "next/link"
-import Text from "../components/Text";
+// import Text from "../components/Text";
+import dynamic from "next/dynamic";
+
+const Text = dynamic(() => import("../components/Text"), {
+  ssr: false,
+});
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
