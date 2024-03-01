@@ -1,14 +1,17 @@
 //@ts-nocheck
 "use client";
 import 'regenerator-runtime/runtime'
-import { FC } from "react";
+import { FC, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { Button } from './ui/button';
 
-interface TextProps {}
+interface TextProps {
+  onTranscriptChange: (transcript: string) => void;
+}
 
-const Text: FC<TextProps> = ({}) => {
+const Text: FC<TextProps> = ({ onTranscriptChange }) => {
   const {
     transcript,
     listening,
@@ -20,17 +23,22 @@ const Text: FC<TextProps> = ({}) => {
     return <span>Browser does not support speech recognition.</span>;
   }
 
+  // Call the callback function whenever the transcript changes
+  if (transcript !== "") {
+    onTranscriptChange(transcript);
+  }
+
   return (
     <div>
       <p>
         <span>generated text:</span>
         {transcript}
       </p>
-        <p>Microphone: {listening ? 'Listing to your voice..' : 'off'}</p>
-      <div className="flex gap-3">
-        <button onClick={SpeechRecognition.startListening}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button onClick={resetTranscript}>Reset</button>
+      <p>Microphone: {listening ? 'Listening to your voice..' : 'off'}</p>
+      <div className="flex gap-4">
+        <Button onClick={SpeechRecognition.startListening}>Start</Button>
+        <Button onClick={SpeechRecognition.stopListening}>Stop</Button>
+        <Button onClick={resetTranscript}>Reset</Button>
       </div>
     </div>
   );
